@@ -1,0 +1,8 @@
+version: '2'
+services:
+  nginx_demo:
+    image: nginx
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - "./html:/usr/share/nginx/html:ro"
