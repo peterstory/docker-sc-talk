@@ -1,0 +1,22 @@
+<style>
+  table, th, td {
+     border: 1px solid black;
+  }
+</style>
+
+<h1>Details of Prior Visits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Agent</th>
+      <th>Time of Request</th>
+    </tr>
+  </thead>
+  {% for visit in visits %}
+    <tr>
+      <td>{{visit.user_agent}}</td>
+      <td>{{visit.created_at}}</td>
+    </tr>
+  {% endfor %}
+</table>

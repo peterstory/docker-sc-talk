@@ -1,4 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
+from .models import Visit
+
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the demo index.")
+    # Save the user agent from the current request
+    Visit.objects.create(user_agent=request.META['HTTP_USER_AGENT'])
+    return render(request, 'index.html', {'visits': Visit.objects.all()})
