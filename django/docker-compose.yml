@@ -1,0 +1,25 @@
+version: '2'
+volumes:
+  postgres-data:
+
+services:
+  django:
+    build: "."
+    environment:
+      - DJANGO_SECRET_KEY
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    volumes:
+      - "./demoproject:/root/django/demoproject"
+    ports:
+      - "${LISTEN_DJANGO}:8888"
+
+  postgres:
+    image: postgres:9.5
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    volumes:
+      - "postgres-data:/var/lib/postgresql/data"
